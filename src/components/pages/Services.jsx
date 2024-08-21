@@ -1,6 +1,7 @@
 import React from 'react';
 import "../assets/css/style.css";
 import "../assets/css/bootstrap.css";
+import "../assets/css/responsive.css";
 import serviceimg1 from "../assets/images/s1.png"; 
 import serviceimg2 from "../assets/images/s2.png"; 
 import serviceimg3 from "../assets/images/s3.png"; 

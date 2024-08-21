@@ -3,6 +3,7 @@ import aboutimg1 from "../assets/images/a1.jpg"
 import aboutimg2 from "../assets/images/a2.jpg"
 import "../assets/css/style.css";
 import "../assets/css/bootstrap.css";
+import "../assets/css/responsive.css";
 
 const About = () => {
   return (

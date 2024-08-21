@@ -1,55 +1,77 @@
-import React from 'react';
-import heroimg from "../assets/images/hero-bg.jpg"; // Adjust the path to your image file
-
+import React, { useState } from 'react';
+import heroimg from "../assets/images/hero-bg.jpg";
+import "../assets/css/responsive.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { Link } from 'react-router-dom';
+import About from './About';
+import Gallery from './Gallery';
+import Services from './Services';
+import TestimonialSection from './Testimonial';
+import ContactSection from './Contact';
+import Footer from './Footer';
 
 const Hero = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const handleToggle = () => {
+    if (isNavOpen === false) {
+      setIsNavOpen(true); 
+    } else {
+      setIsNavOpen(false);
+    }
+  };
+
   return (
+    <div>
+
     <div className="hero_area">
       <header className="header_section">
         <div className="container">
           <nav className="navbar navbar-expand-lg custom_nav-container">
-            <a className="navbar-brand" href="index.html">
+          <Link className="navbar-brand" to="/">
               <span>Caree</span>
-            </a>
+            </Link>
 
             <button
               className="navbar-toggler"
               type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
-              aria-expanded="false"
+              aria-expanded={isNavOpen}
               aria-label="Toggle navigation"
+              onClick={handleToggle}
             >
-              <span></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''}`} id="navbarSupportedContent">
               <ul className="navbar-nav">
                 <li className="nav-item active">
-                  <a className="nav-link" href="index.html">
+                <Link className="nav-link" to="/" onClick={handleToggle}>
                     Home <span className="sr-only">(current)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="about.html">
+                <Link className="nav-link" to="/about" onClick={handleToggle}>
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="service.html">
+                <Link className="nav-link" to="/services" onClick={handleToggle}>
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="gallery.html">
+                <Link className="nav-link" to="/gallery" onClick={handleToggle}>
                     Gallery
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="contact.html">
+                <Link className="nav-link" to="/contact" onClick={handleToggle}>
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -60,6 +82,55 @@ const Hero = () => {
       <div className="hero_bg_box">
         <img src={heroimg} alt="Hero Background" />
       </div>
+
+      <section className="slider_section">
+        <div id="customCarousel1" className="carousel slide" data-bs-ride="carousel">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-8 col-xl-6 mx-auto">
+                    <div className="detail-box">
+                      <h1>
+                        We Are <br />
+                        Wedding Planners
+                      </h1>
+                      <p>
+                        Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                      </p>
+                      <div className="btn-box">
+                        <a href="" className="btn1">
+                          Contact Us
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Add additional carousel items here */}
+          </div>
+          {/* Uncomment if you want carousel controls */}
+          {/* <div className="carousel_btn-box">
+            <a className="carousel-control-prev" href="#customCarousel1" role="button" data-bs-slide="prev">
+              <i className="fa fa-long-arrow-left" aria-hidden="true"></i>
+              <span className="sr-only">Previous</span>
+            </a>
+            <a className="carousel-control-next" href="#customCarousel1" role="button" data-bs-slide="next">
+              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
+              <span className="sr-only">Next</span>
+            </a>
+          </div> */}
+        </div>
+      </section>
+     
+    </div>
+    <About />
+    <Gallery />
+    <Services />
+    <ContactSection />
+    <TestimonialSection />
+    <Footer />
     </div>
   );
 };
